@@ -1,3 +1,5 @@
+from lib2to3.fixes.fix_input import context
+
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -46,6 +48,15 @@ def astronaut_selection():
         print(request.form['ready'])
         return '<h1>Анкета отправлена<h1>'
 
+@app.route('/training/<prof>')
+def training(prof):
+    context = {
+        'prof': prof
+    }
+    return render_template('training.html', **context)
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
+
+
 
