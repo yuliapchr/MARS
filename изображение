@@ -1,26 +1,25 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def mission():
-    return '<h1>Миссия Колонизация Марса</h1>'
+def index():
+    return '<h1> Миссия Колонизация Марса </h1>'
 
 
 @app.route('/index')
-def index():
-    return '<h2>И на Марсе будут яблони цвести!</h2>'
+def about():
+    return '<h1> И на Марсе будут яблони цвести! </h1>'
 
 
 @app.route('/promotion')
 def promotion():
-    return '''Человечество вырастает из детства.<br><br>
-Человечеству мала одна планета.<br><br>
-Мы сделаем обитаемыми безжизненные пока планеты.<br><br>
-И начнем с Марса!<br><br>
-Присоединяйся!'''
-
+    return '''<h1>Человечество вырастает из детства. <br>
+Человечеству мала одна планета. <br>
+Мы сделаем обитаемыми безжизненные пока планеты. <br>
+И начнем с Марса! <br>
+Присоединяйся!</h1>'''
 
 @app.route('/image_mars')
 def image_mars():
