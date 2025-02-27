@@ -1,0 +1,23 @@
+ {% extends "base.html" %}
+
+ {% block content %}
+ {% if list == 'ul' %}
+ <ul>
+   {% for prof in profs %}
+   <li>{{ prof }}</li>
+   {% endfor %}
+ </ul>
+ {% elif list == 'ol' %}
+  <ol>
+   {% for prof in profs %}
+   <li>{{ prof }}</li>
+   {% endfor %}
+ </ol>
+
+ {% else %}
+ <div class="alert alert-danger" role="alert">
+   Параметр передан неправильно
+</div>
+
+ {% endif %}
+ {% endblock %}
