@@ -51,12 +51,24 @@ def astronaut_selection():
 @app.route('/training/<prof>')
 def training(prof):
     context = {
-        'prof': prof
+        'profs': prof
     }
     return render_template('training.html', **context)
 
+
+@app.route('/list_prof/<lst>')
+def list_prof(lst):
+    context = {
+        'list': lst,
+        'profs': ['инженер-исследователь', 'пилот', 'строитель', 'экзобиолог', 'врач', 'инженер по терраформированию', 'климатолог']
+    }
+    return render_template('list_prof.html', **context)
+
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
+
+
 
 
 
