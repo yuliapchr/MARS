@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+ from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
 from werkzeug.utils import redirect
 from wtforms import StringField, PasswordField, SubmitField
@@ -8,9 +8,9 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum'
 
 class LoginForm(FlaskForm):
-    astronaut_id = StringField('id астронавта', validators=[DataRequired()])
+    astronaut_id = StringField('ID астронавта', validators=[DataRequired()])
     astronaut_password = PasswordField('Пароль астронавта', validators=[DataRequired()])
-    capitan_id = StringField('id капитана', validators=[DataRequired()])
+    capitan_id = StringField('ID капитана', validators=[DataRequired()])
     capitan_password = PasswordField('Пароль капитана', validators=[DataRequired()])
     access = SubmitField('Доступ')
 
@@ -46,7 +46,7 @@ def promotion_image():
 
 @app.route('/astronaut_selection')
 def astronaut_selection():
-    return  render_template('astronaut_selection.html')
+    return render_template('astronaut_selection.html')
 
 
 @app.route('/answer', methods=['POST'])
@@ -57,7 +57,7 @@ def answer():
         'surname': request.form['surname'],
         'name': request.form['name'],
         'education': request.form['education'],
-        'profession': ' , '.join(request.form.getlist('profession')),
+        'profession': ', '.join(request.form.getlist('profession')),
         'gender': request.form['gender'],
         'motivation': request.form['motivation'],
         'ready': request.form.get('ready', '') == 'Готов'
@@ -93,11 +93,3 @@ def login():
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
-
-
-
-
-
-
-
-
