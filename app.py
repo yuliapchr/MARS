@@ -56,7 +56,7 @@ def answer():
 @app.route('/training/<prof>')
 def training(prof):
     context = {
-        'profs': prof
+        'prof': prof
     }
     return render_template('training.html', **context)
 
