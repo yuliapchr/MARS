@@ -35,8 +35,8 @@ peop2.hashed_password = 'qwertyui'
 peop2.email = 'scott_chief2@mars.org'
 
 peop3 = User()
-peop3.surname = 'Scot'
-peop3.name = 'Ridey'
+peop3.surname = 'Sco'
+peop3.name = 'Dey'
 peop3.age = 30
 peop3.position = 'people'
 peop3.speciality = 'engineer'
