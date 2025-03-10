@@ -44,7 +44,7 @@ def promotion_image():
     return render_template('promotion_image.html')
 
 
-@app.route('/astronaut_selection', methods=['GET', 'POST'])
+@app.route('/astronaut_selection')
 def astronaut_selection():
     return  render_template('astronaut_selection.html')
 
