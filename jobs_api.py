@@ -25,3 +25,22 @@ def get_jobs_id(job_id):
     return jsonify({
         'jobs_id': jobs_id.to_dict()
     })
+
+
+@blueprint.route('/api/jobs', methods=['POST'])
+def create_jobs():
+    if not request.json:
+        return make_response(jsonify({'error': 'Bad request'}), 400)
+    column = ['team_leader', 'job', 'collaborators', 'work_size', 'is_finished']
+    if not all([key in column for key in request.json]):
+        return make_response(jsonify({'error': 'Bad request'}), 400)
+    sess = db_session.create_session()
+    jobs = Jobs()
+    jobs.team_leader = request.json['team_leader']
+    jobs.job = request.json['job']
+    jobs.collaborators = request.json['collaborators']
+    jobs.work_size = request.json['work_size']
+    jobs.is_finished = request.json['is_finished']
+    sess.add(jobs)
+    sess.commit()
+    return jsonify({'jobs.id': jobs.id})
