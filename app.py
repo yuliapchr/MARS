@@ -9,10 +9,16 @@ from data.users import User
 from data import db_session
 from data.jobs import Jobs
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from flask_restful import Api
+from users_resource import UserResource, UserListResousre
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum'
 app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=365)
+
+api = Api(app)
+api.add_resource(UserResource, '/api/v2/users/<int:user_id>')
+api.add_resource(UserListResousre, '/api/v2/users')
 
 login_manager = LoginManager()
 login_manager.init_app(app)
